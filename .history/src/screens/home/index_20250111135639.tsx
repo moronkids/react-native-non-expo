@@ -1,14 +1,7 @@
-import { StackActions, useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 
 function Index() {
-    const navigation = useNavigation();
-    useEffect(() => {
-        setTimeout(() => {
-            navigation.dispatch(StackActions.replace('Home'));
-        }, 500);
-    }, [navigation]);
     return (
         <View style={{
             display: 'flex',

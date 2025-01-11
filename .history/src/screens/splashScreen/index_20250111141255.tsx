@@ -8,7 +8,7 @@ function Index() {
         setTimeout(() => {
             navigation.dispatch(StackActions.replace('Home'));
         }, 500);
-    }, [navigation]);
+    }, []);
     return (
         <View style={{
             display: 'flex',
