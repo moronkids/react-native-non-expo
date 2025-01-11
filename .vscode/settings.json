@@ -1,0 +1,143 @@
+{
+  "keyboard.dispatch": "keyCode",
+  "workbench.colorTheme": "Monokai",
+  "editor.fontFamily": "Hack",
+  "editor.fontLigatures": true,
+  "atomKeymap.promptV3Features": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.formatOnPaste": true,
+  "editor.lineHeight": 25,
+  "editor.rulers": [80, 120],
+  "editor.scrollBeyondLastLine": false,
+  "files.trimTrailingWhitespace": true,
+  "explorer.openEditors.visible": 0,
+  "php.suggest.basic": false,
+  "editor.renderLineHighlight": "all",
+  "terminal.integrated.fontSize": 12,
+  "workbench.editor.tabSizing": "shrink",
+  "emmet.includeLanguages": {
+    "blade": "html"
+  },
+  "bracketPairColorizer.forceUniqueOpeningColor": true,
+  "python.pythonPath": "~/anaconda3/bin/python",
+  "python.linting.pycodestyleEnabled": true,
+  "python.linting.pylintArgs": ["--load-plugins", "pylint_django"],
+  "python.linting.pylintPath": "~/anaconda3/bin/pylint",
+  "sync.gist": "d8262efe75f66b86d7bcfffd6b971d83",
+  "sync.host": "",
+  "sync.pathPrefix": "",
+  "sync.quietSync": false,
+  "sync.askGistName": false,
+  "sync.removeExtensions": true,
+  "sync.syncExtensions": true,
+  "sync.autoDownload": false,
+  "sync.autoUpload": false,
+  "sync.lastUpload": "",
+  "sync.lastDownload": "2018-03-04T08:17:19.980Z",
+  "sync.forceDownload": false,
+  "material-icon-theme.showUpdateMessage": false,
+  "terminal.integrated.env.osx": {},
+  "vetur.format.defaultFormatter.js": "none",
+  "explorer.confirmDelete": false,
+  "python.jediEnabled": false,
+  "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+  "workbench.startupEditor": "newUntitledFile",
+  "php-cs-fixer.lastDownload": 1562308864117,
+  "explorer.confirmDragAndDrop": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "python.formatting.provider": "none",
+  "blade.format.enable": true,
+  "emmet.triggerExpansionOnTab": true,
+  "java.home": "/Library/Java/JavaVirtualMachines/jdk-12.0.1.jdk/Contents/Home",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "terminal.integrated.rendererType": "dom",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "files.autoSave": "off",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.fontSize": 11.5,
+  "intelephense.diagnostics.typeErrors": false,
+  "intelephense.diagnostics.undefinedTypes": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.maxComputationTime": 0,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "html.format.contentUnformatted": "code",
+  "html.format.unformatted": null,
+  "html.format.indentInnerHtml": true,
+  "html.format.endWithNewline": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "tailwindCSS.emmetCompletions": true,
+
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    // "source.fixAll": "explicit",
+    "source.organizeImports": "always",
+    "source.fixAll.eslint": "explicit"
+  },
+  // "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "css.validate": false, // Disable css built-in lint
+  "stylelint.enable": true,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "debug.javascript.autoAttachFilter": "disabled",
+  "workbench.settings.openDefaultKeybindings": true, // Enable sytlelint
+  // "[javascriptreact]": {
+  //   "editor.formatOnSave": false
+  // }
+  "[go]": {
+    "editor.formatOnSave": false
+    // "editor.defaultFormatter": "golang.go”
+  },
+  "[php]": {
+    "editor.formatOnSave": false
+    // "editor.defaultFormatter": "golang.go”
+  },
+  "gopls": {
+    "formatting.gofumpt": true
+  },
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.editor.enablePreviewFromCodeNavigation": true,
+  "workbench.iconTheme": "vscode-icons",
+  "window.openFilesInNewWindow": "on",
+  "workbench.editor.limit.enabled": true,
+  "editor.rename.enablePreview": false,
+  "json.schemas": [],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[blade]": {
+    "editor.defaultFormatter": "onecentlin.laravel-blade"
+  },
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "remote.autoForwardPortsSource": "hybrid",
+  "terminal.integrated.defaultProfile.linux": "zsh"
+}

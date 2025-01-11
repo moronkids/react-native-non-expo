@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
 import { Button, Text, View } from 'react-native';
 
 function Index() {
@@ -16,7 +15,7 @@ function Index() {
             }}>
                 Home Screen
             </Text>
-            <Button title="details" onPress={() => navigate('Details')}>Go to Details</Button>
+            <Button title="details" onPress={() => navigate("Details" as never)} accessibilityLabel='test' />
         </View>
     );
 }

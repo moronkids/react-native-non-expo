@@ -2,10 +2,39 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["es6", "dom"],
+    "jsx": "react-native",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true, // Prevent TypeScript from emitting files
     "baseUrl": ".", // <- can also use anything, e.g: ./src
     "paths": {
       "@/*": ["./src/*"]
       // "@api": ["./api"] <- would work the same
     }
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "tests/**/*.ts",
+    "src/**/*.d.ts",
+    "./.eslintrc.js",
+    "*.tsx",
+    "./tsconfig.json",
+    "./craco.config.ts",
+    "./environment.d.ts",
+    "routes.tsx",
+    "*.js",
+    "./prettierrc.js"
+  ],
+  "exclude": [".history"]
 }
