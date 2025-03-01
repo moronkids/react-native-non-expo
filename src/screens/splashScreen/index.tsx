@@ -1,30 +1,26 @@
+import SplashScreen from '@/assets/img/splash-screen.png';
 import { StackActions, useNavigation } from '@react-navigation/native';
 import { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Image, View } from 'react-native';
 
 function Index() {
   const navigation = useNavigation();
   useEffect(() => {
     setTimeout(() => {
       navigation.dispatch(StackActions.replace('Home'));
-    }, 500);
+    }, 950);
   }, [navigation]);
   return (
     <View
       style={{
+        backgroundColor: '#fff',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
       }}
     >
-      <Text
-        style={{
-          textAlign: 'center',
-        }}
-      >
-        Splash Screen
-      </Text>
+      <Image source={SplashScreen} style={{ width: 160, height: 35 }} />
     </View>
   );
 }

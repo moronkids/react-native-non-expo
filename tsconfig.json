@@ -34,7 +34,8 @@
     "./environment.d.ts",
     "routes.tsx",
     "*.js",
-    "./prettierrc.js"
+    "./prettierrc.js",
+    "react-app-env.d.ts"
   ],
   "exclude": [".history"]
 }
