@@ -1,11 +1,11 @@
-import Details from '@/screens/detail';
-import Home from '@/screens/home';
-import Layout from '@/screens/layout';
-import SplashScreen from '@/screens/splashScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import Home from './src/screens/home';
+import Receipt from './src/screens/receipt';
+import SplashScreen from './src/screens/splashScreen';
 function RootStack() {
+  console.log('<<app-is-running');
+
   const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator
@@ -16,9 +16,9 @@ function RootStack() {
       }}
     >
       <Stack.Screen name='SplashScreen' component={SplashScreen} />
-      <Stack.Screen name='Layout' component={Layout} />
+      <Stack.Screen name='Registration' component={Home} />
       <Stack.Screen name='Home' component={Home} />
-      <Stack.Screen name='Details' component={Details} />
+      <Stack.Screen name='Receipt' component={Receipt} />
     </Stack.Navigator>
   );
 }

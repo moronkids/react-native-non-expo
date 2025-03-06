@@ -20,6 +20,7 @@
       // "@api": ["./api"] <- would work the same
     }
   },
+
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",

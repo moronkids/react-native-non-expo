@@ -1,7 +1,6 @@
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import unusedImports from "eslint-plugin-unused-imports";
 import globals from "globals";
-import tsParser from "@typescript-eslint/parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
@@ -51,12 +50,12 @@ export default [{
             ...globals.jest,
         },
 
-        parser: tsParser,
         ecmaVersion: "latest",
         sourceType: "module",
 
         parserOptions: {
-            tsconfigRootDir: "/Users/sulistyo/Documents/bsim/NonExpo",
+            parser: "@typescript-eslint/parser",
+            tsconfigRootDir: "/Users/sulistyo/Documents/bsim/sistem-antrian/react-native-non-expo",
             project: "./tsconfig.json",
         },
     },

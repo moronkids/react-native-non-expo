@@ -5,8 +5,8 @@ module.exports = {
     jest: true,
   },
   extends: ['plugin:@typescript-eslint/eslint-recommended', 'plugin:react/recommended', 'plugin:react/jsx-runtime', 'prettier'],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 'latest',
     tsconfigRootDir: __dirname,
     sourceType: 'module',
