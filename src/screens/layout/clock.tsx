@@ -76,6 +76,7 @@ const UTCPlus7Clock = () => {
 
 const styles = StyleSheet.create({
   container: {
+    zIndex: 99999,
     flexDirection: 'row',
     alignItems: 'center',
   },

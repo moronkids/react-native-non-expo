@@ -24,7 +24,7 @@ const SVGComponent: React.FC<SVGComponentProps> = ({
   const diameter = circleRadius * 2;
   const spacing = diameter * gapPercentage;
   const totalWidth = circleCount * diameter + (circleCount - 1) * spacing;
-  const totalHeight = diameter;
+  const totalHeight = diameter + 1;
 
   const circles = Array.from({ length: circleCount }, (_, index) => {
     const cx = circleRadius + index * (diameter + spacing);

@@ -4,18 +4,28 @@ import Layout from '../layout';
 import MenuData from './menu.data';
 import Registration, { useDynamicDimensionScale } from './style';
 
+const titleTheme = {
+  dark: { ...Registration.title, ...Registration.titleDark },
+  light: Registration.title,
+};
+
+const descTheme = {
+  dark: { ...Registration.desc, ...Registration.descDark },
+  light: Registration.desc,
+};
+
 function Index() {
   const scale = useDynamicDimensionScale();
   return (
     <Layout>
       <View style={Registration.container}>
         <View>
-          <Text style={Registration.title}>Selamat datang</Text>
-          <Text style={Registration.desc}>Silakan pilih layanan</Text>
+          <Text style={titleTheme.dark}>Selamat datang</Text>
+          <Text style={descTheme.dark}>Silakan pilih layanan</Text>
         </View>
         <View style={[Registration.containerMenu, { transform: [{ scale: scale }] }]}>
           {MenuData.map((item) => (
-            <Hexagon key={item.title} title={item.title} Icon={item.icon} />
+            <Hexagon key={item.title} title={item.title} Icon={item.iconDark} />
           ))}
         </View>
       </View>

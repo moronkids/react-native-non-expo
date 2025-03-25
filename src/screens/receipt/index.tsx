@@ -2,6 +2,7 @@ import BsimLogoDark from '@/assets/img/bsimLogoDark.svg';
 import Scallop from '@/screens/receipt/scallop';
 import { useNavigationState } from '@react-navigation/native';
 import { Text, View } from 'react-native';
+import MenuData from '../home/menu.data';
 import Layout from '../layout/receipt';
 import Style from './style';
 
@@ -12,6 +13,25 @@ type RoutesState = {
     service: string;
   };
 };
+
+const mappingCounterOrder = {
+  [MenuData[0].title]: 'A',
+  [MenuData[1].title]: 'B',
+  [MenuData[2].title]: 'C',
+  [MenuData[3].title]: 'D',
+  [MenuData[4]?.title]: 'E',
+};
+
+const ScallopColor = {
+  light: '#FBE3E4',
+  dark: '#372C17',
+  darkTop: '#1B1917',
+};
+
+const StyleTitle = {
+  light: Style.title,
+  dark: Style.titleDark,
+};
 function Index() {
   const navigation = useNavigationState((state) => state.routes[state.index]) as RoutesState;
   const nameOfService = navigation.params.service;
@@ -20,7 +40,7 @@ function Index() {
       <View style={Style.container}>
         <View style={{ display: 'flex', alignItems: 'center', gap: 31 }}>
           <View>
-            <Text style={Style.title}>Silakan ambil tiket antrean Anda</Text>
+            <Text style={StyleTitle.dark}>Silakan ambil tiket antrean Anda</Text>
           </View>
           <View style={Style.containerReceipt}>
             <View style={Style.wrapperReceiptContent}>
@@ -30,7 +50,7 @@ function Index() {
               </View>
               <View style={Style.wrapperQueue}>
                 <Text style={Style.titleQueue}>Nomor antrean Anda</Text>
-                <Text style={Style.numberOfQueue}>A001</Text>
+                <Text style={Style.numberOfQueue}>{`${mappingCounterOrder[nameOfService]}001`}</Text>
                 <Text style={Style.nameOfService}>{nameOfService}</Text>
               </View>
               <View style={Style.wrapperInformation}>
@@ -38,22 +58,22 @@ function Index() {
               </View>
             </View>
             <Scallop
-              circleColor='#FBE3E4'
+              circleColor={ScallopColor.dark}
               circleOpacity='100'
               circleCount={21}
               style={{
                 position: 'absolute',
-                bottom: -5,
+                bottom: -6,
               }}
             />
             <Scallop
-              circleColor='white'
+              circleColor={ScallopColor.darkTop}
               circleOpacity='100'
               circleCount={21}
-              reverse={true}
+              reverse
               style={{
                 position: 'absolute',
-                top: -5,
+                top: -6,
               }}
             />
           </View>

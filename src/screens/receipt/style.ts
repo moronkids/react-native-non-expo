@@ -72,6 +72,12 @@ const Registration = StyleSheet.create({
         fontWeight: 700,
         color: '#303435',
     },
+    titleDark: {
+        fontFamily: 'Inter',
+        fontSize: 28,
+        fontWeight: 700,
+        color: '#FFFFFF',
+    },
     desc: {
         fontFamily: 'Inter',
         fontSize: 28,

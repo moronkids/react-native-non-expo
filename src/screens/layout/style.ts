@@ -1,5 +1,28 @@
 import { StyleSheet } from "react-native";
 
+export const Theme = StyleSheet.create({
+    darkBgColor: {
+        backgroundColor: '#1B1917'
+    },
+    darkLogoContainer: {
+        backgroundColor: 'linear-gradient(225.95deg, #996404 44.5 %, #B69C6C 78.14 %)'
+    },
+    darkFooterContainer: {
+        backgroundColor: 'linear-gradient(89.93deg, #E0AA3E 7.74 %, #7A5D22 103.9 %)'
+
+    },
+    //
+    lightBgColor: {
+        backgroundColor: '#FDFDFD'
+    },
+    lightLogoContainer: {
+        backgroundColor: '#E72D2A'
+    },
+    lightFooterContainer: {
+        backgroundColor: '#E72D2A'
+    }
+});
+
 const Layout = StyleSheet.create({
     container: {
         position: 'relative',
@@ -68,6 +91,7 @@ const Layout = StyleSheet.create({
         gap: 16
     },
     footer: {
+        zIndex: 999999,
         color: 'white',
         fontWeight: 800,
         fontFamily: 'Inter',

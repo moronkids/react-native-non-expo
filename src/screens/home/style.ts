@@ -16,12 +16,18 @@ const Registration = StyleSheet.create({
         fontWeight: "700",
         color: "#303435",
     },
+    titleDark: {
+        color: "#FFFFFF",
+    },
     desc: {
         fontFamily: "Inter",
         fontSize: 28,
         fontWeight: "600",
         textAlign: "center",
         color: "#303435",
+    },
+    descDark: {
+        color: '#E0AA3E'
     },
     containerMenu: {
         display: "flex",
@@ -49,6 +55,13 @@ export const Menu = StyleSheet.create({
         fontSize: 20,
         textAlign: "center",
         fontWeight: "600",
+    },
+    titleOfServiceDark: {
+        zIndex: 2,
+        fontSize: 20,
+        textAlign: "center",
+        fontWeight: "600",
+        color: '#303435'
     },
     boxShadow: {
         position: "absolute",
