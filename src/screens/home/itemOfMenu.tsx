@@ -16,7 +16,7 @@ const titleTheme = {
   dark: Style.titleOfServiceDark,
 };
 
-function Hexagon({ title, Icon }: Readonly<{ title: string; Icon: React.FC<SvgProps> }>) {
+function Hexagon({ title, Icon, isPriority }: Readonly<{ title: string; Icon: React.FC<SvgProps>; isPriority: boolean }>) {
   const navigation = useNavigation();
 
   const handlePress = () => {
@@ -30,9 +30,9 @@ function Hexagon({ title, Icon }: Readonly<{ title: string; Icon: React.FC<SvgPr
   return (
     <TouchableOpacity onPress={handlePress} style={{ position: 'relative' }}>
       <View style={Style.container}>
-        <Text style={titleTheme.dark}>{title}</Text>
+        <Text style={titleTheme[isPriority ? 'dark' : 'light']}>{title}</Text>
         <Icon width={70} height={70} style={{ zIndex: 2 }} />
-        {hexagonTheme.dark}
+        {hexagonTheme[isPriority ? 'dark' : 'light']}
       </View>
       <View style={Style.boxShadow} />
     </TouchableOpacity>

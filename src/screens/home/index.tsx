@@ -1,4 +1,6 @@
 import Hexagon from '@/screens/home/itemOfMenu';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import Layout from '../layout';
 import MenuData from './menu.data';
@@ -15,17 +17,35 @@ const descTheme = {
 };
 
 function Index() {
+  const [isPriority, setIsPriority] = useState<boolean>();
   const scale = useDynamicDimensionScale();
+  const getCustomerType = async () => {
+    try {
+      const response = (await AsyncStorage.getItem('isPriority')) ?? 'false';
+      console.log(response, JSON.parse(response) === 'true', '<<home-rep');
+
+      const isPriority = (response !== null && JSON.parse(response)) || false;
+      setIsPriority(isPriority);
+    } catch {
+      console.log('error get customer type');
+      return false;
+    }
+  };
+  useEffect(() => {
+    getCustomerType();
+  }, []);
+  console.log('<<home', isPriority);
+
   return (
-    <Layout>
+    <Layout theme={isPriority ? 'dark' : 'light'}>
       <View style={Registration.container}>
         <View>
-          <Text style={titleTheme.dark}>Selamat datang</Text>
-          <Text style={descTheme.dark}>Silakan pilih layanan</Text>
+          <Text style={titleTheme[isPriority ? 'dark' : 'light']}>Selamat datang</Text>
+          <Text style={descTheme[isPriority ? 'dark' : 'light']}>Silakan pilih layanan</Text>
         </View>
         <View style={[Registration.containerMenu, { transform: [{ scale: scale }] }]}>
           {MenuData.map((item) => (
-            <Hexagon key={item.title} title={item.title} Icon={item.iconDark} />
+            <Hexagon key={item.title} title={item.title} Icon={item[isPriority ? 'iconDark' : 'icon']} isPriority={isPriority ?? false} />
           ))}
         </View>
       </View>

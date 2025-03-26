@@ -26,7 +26,7 @@ const GradientExample = () => {
 };
 
 const containerLogo = {
-  light: <View style={{ ...Styles.containerLogo, ...Theme.darkLogoContainer }} />,
+  light: <View style={{ ...Styles.containerLogo, ...Theme.lightLogoContainer }} />,
   dark: <GradientExample />,
 };
 const footerTheme = {
@@ -53,14 +53,20 @@ const imgBackground = {
   dark: WaveDark,
   light: WaveImg,
 };
-function Index({ children }: { readonly children: ReactElement }) {
+
+const container = {
+  dark: Theme.darkBgColor,
+  light: Theme.lightBgColor,
+};
+
+function Index({ children, theme }: { readonly children: ReactElement; theme: 'dark' | 'light' }) {
   return (
-    <View style={{ ...Styles.container, ...Theme.darkBgColor }}>
-      {containerLogo.dark}
-      <ImageBackground source={imgBackground.dark} style={{ ...Styles.imgBackground }} />
+    <View style={{ ...Styles.container, ...container[theme] }}>
+      {containerLogo[theme]}
+      <ImageBackground source={imgBackground[theme]} style={{ ...Styles.imgBackground }} />
       <BSIMIcon width={135} style={Styles.logo} />
       {children}
-      {footerTheme.dark}
+      {footerTheme[theme]}
     </View>
   );
 }

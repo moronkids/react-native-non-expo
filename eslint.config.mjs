@@ -1,6 +1,9 @@
+import { defineConfig, globalIgnores } from "eslint/config";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import unusedImports from "eslint-plugin-unused-imports";
+import react from "eslint-plugin-react";
 import globals from "globals";
+import tsParser from "@typescript-eslint/parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
@@ -14,34 +17,35 @@ const compat = new FlatCompat({
     allConfig: js.configs.all
 });
 
-export default [{
-    ignores: [
-        "**/node_modules",
-        ".history/*",
-        "bundle/*",
-        "dist/*",
-        "build/*",
-        "coverage/*",
-        "android/*",
-        "ios/*",
-        "__tests__/*",
-        "__mocks__/*",
-        "**/metro.config.js",
-        "**/jest.config.js",
-        "**/app.json",
-        "**/babel.config.js",
-        "**/tsconfig.json",
-        "**/*.mjs",
-    ],
-}, ...compat.extends(
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "prettier",
-), {
+export default defineConfig([globalIgnores([
+    "**/node_modules",
+    ".history/*",
+    "bundle/*",
+    "dist/*",
+    "build/*",
+    "coverage/*",
+    "android/*",
+    "ios/*",
+    "__tests__/*",
+    "__mocks__/*",
+    "**/metro.config.js",
+    "**/jest.config.js",
+    "**/app.json",
+    "**/babel.config.js",
+    "**/tsconfig.json",
+    "**/*.mjs",
+]), {
+    extends: compat.extends(
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "prettier",
+    ),
+
     plugins: {
         "@typescript-eslint": typescriptEslint,
         "unused-imports": unusedImports,
+        react,
     },
 
     languageOptions: {
@@ -50,13 +54,16 @@ export default [{
             ...globals.jest,
         },
 
+        parser: tsParser,
         ecmaVersion: "latest",
         sourceType: "module",
 
         parserOptions: {
-            parser: "@typescript-eslint/parser",
-            tsconfigRootDir: "/Users/sulistyo/Documents/bsim/sistem-antrian/react-native-non-expo",
             project: "./tsconfig.json",
+
+            ecmaFeatures: {
+                jsx: true,
+            },
         },
     },
 
@@ -92,4 +99,4 @@ export default [{
             code: 200,
         }],
     },
-}];
+}]);

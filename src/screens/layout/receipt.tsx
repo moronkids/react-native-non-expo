@@ -30,7 +30,7 @@ const GradientExample = () => {
 };
 
 const containerLogo = {
-  light: <View style={{ ...Styles.containerLogo, ...Theme.darkLogoContainer }} />,
+  light: <View style={{ ...Styles.containerLogo, ...Theme.lightLogoContainer }} />,
   dark: <GradientExample />,
 };
 const footerTheme = {
@@ -76,18 +76,18 @@ const BgImgComponent = {
     </View>
   ),
 };
-function Index({ children }: { readonly children: ReactElement }) {
+function Index({ children, theme }: { readonly children: ReactElement; theme: 'light' | 'dark' }) {
   return (
-    <View style={(Styles.container, { backgroundColor: '#1B1917' })}>
+    <View style={(Styles.container, { backgroundColor: theme === 'dark' ? '#1B1917' : '#FFFFFF' })}>
       <View style={Styles.containerReceipt}>
-        {HalfCircleComponent.dark}
-        {BgShadowComponent.dark}
+        {HalfCircleComponent[theme]}
+        {BgShadowComponent[theme]}
       </View>
-      {BgImgComponent.dark}
-      {containerLogo.dark}
+      {BgImgComponent[theme]}
+      {containerLogo[theme]}
       <BSIMIcon width={135} style={Styles.logo} />
       {children}
-      {footerTheme.dark}
+      {footerTheme[theme]}
     </View>
   );
 }

@@ -1,6 +1,8 @@
 import BsimLogoDark from '@/assets/img/bsimLogoDark.svg';
 import Scallop from '@/screens/receipt/scallop';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigationState } from '@react-navigation/native';
+import { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import MenuData from '../home/menu.data';
 import Layout from '../layout/receipt';
@@ -35,12 +37,28 @@ const StyleTitle = {
 function Index() {
   const navigation = useNavigationState((state) => state.routes[state.index]) as RoutesState;
   const nameOfService = navigation.params.service;
+  const [isPriority, setIsPriority] = useState<boolean>();
+  const getCustomerType = async () => {
+    try {
+      const response = (await AsyncStorage.getItem('isPriority')) ?? 'false';
+      console.log(response, JSON.parse(response) === 'true', '<<home-rep');
+      const isPriority = (response !== null && JSON.parse(response)) || false;
+      setIsPriority(isPriority);
+    } catch {
+      console.log('error get customer type');
+      return false;
+    }
+  };
+  useEffect(() => {
+    getCustomerType();
+  }, []);
+
   return (
-    <Layout>
+    <Layout theme={isPriority ? 'dark' : 'light'}>
       <View style={Style.container}>
         <View style={{ display: 'flex', alignItems: 'center', gap: 31 }}>
           <View>
-            <Text style={StyleTitle.dark}>Silakan ambil tiket antrean Anda</Text>
+            <Text style={StyleTitle[isPriority ? 'dark' : 'light']}>Silakan ambil tiket antrean Anda</Text>
           </View>
           <View style={Style.containerReceipt}>
             <View style={Style.wrapperReceiptContent}>
@@ -58,7 +76,7 @@ function Index() {
               </View>
             </View>
             <Scallop
-              circleColor={ScallopColor.dark}
+              circleColor={ScallopColor[isPriority ? 'dark' : 'light']}
               circleOpacity='100'
               circleCount={21}
               style={{
@@ -74,6 +92,7 @@ function Index() {
               style={{
                 position: 'absolute',
                 top: -6,
+                display: isPriority ? 'flex' : 'none',
               }}
             />
           </View>
