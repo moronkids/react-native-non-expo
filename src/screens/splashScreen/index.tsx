@@ -7,7 +7,7 @@ function Index() {
   const navigation = useNavigation();
   useEffect(() => {
     setTimeout(() => {
-      navigation.dispatch(StackActions.replace('Regist'));
+      navigation.dispatch(StackActions.push('Regist'));
     }, 950);
   }, [navigation]);
   return (

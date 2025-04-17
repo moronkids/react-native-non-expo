@@ -1,4 +1,5 @@
 import BsimLogoDark from '@/assets/img/bsimLogoDark.svg';
+import { DARK, LIGHT } from '@/helpers/constant/theme';
 import Scallop from '@/screens/receipt/scallop';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigationState } from '@react-navigation/native';
@@ -54,11 +55,11 @@ function Index() {
   }, []);
 
   return (
-    <Layout theme={isPriority ? 'dark' : 'light'}>
+    <Layout theme={isPriority ? DARK : LIGHT}>
       <View style={Style.container}>
         <View style={{ display: 'flex', alignItems: 'center', gap: 31 }}>
           <View>
-            <Text style={StyleTitle[isPriority ? 'dark' : 'light']}>Silakan ambil tiket antrean Anda</Text>
+            <Text style={StyleTitle[isPriority ? DARK : LIGHT]}>Silakan ambil tiket antrean Anda</Text>
           </View>
           <View style={Style.containerReceipt}>
             <View style={Style.wrapperReceiptContent}>
@@ -76,7 +77,7 @@ function Index() {
               </View>
             </View>
             <Scallop
-              circleColor={ScallopColor[isPriority ? 'dark' : 'light']}
+              circleColor={ScallopColor[isPriority ? DARK : LIGHT]}
               circleOpacity='100'
               circleCount={21}
               style={{

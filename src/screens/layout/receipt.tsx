@@ -1,3 +1,5 @@
+import ArrowDownWhite from '@/assets/img/arrow-down-white.svg';
+import ArrowDown from '@/assets/img/arrow-down.svg';
 import HalfCircle from '@/assets/img/bgReceipt.svg';
 import BgShadow from '@/assets/img/bgReceiptShadow.svg';
 import BSIMIcon from '@/assets/img/bsimLogo.svg';
@@ -5,11 +7,22 @@ import HalfCircleDark from '@/assets/img/dark/bgReceipt.svg';
 import BgShadowDark from '@/assets/img/dark/bgReceiptShadow.svg';
 import WaveImgDark from '@/assets/img/dark/wave.png';
 import WaveImg from '@/assets/img/wave.png';
+import { DARK, LIGHT } from '@/helpers/constant/theme';
+import { GlobProvider, useGlobalContext } from '@/helpers/context';
 import Clock from '@/screens/layout/clock';
 import Styles, { Theme } from '@/screens/layout/style';
-import { memo, ReactElement } from 'react';
-import { ImageBackground, Text, View } from 'react-native';
+import { THEME } from '@/types/theme';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { memo, ReactElement, useEffect } from 'react';
+import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import LogoutPrompt from './logoutPrompt';
+import Profile from './profile';
+
+const ArrowDownType = {
+  light: <ArrowDown />,
+  dark: <ArrowDownWhite />,
+};
 
 const GradientExample = () => {
   return (
@@ -76,9 +89,40 @@ const BgImgComponent = {
     </View>
   ),
 };
-function Index({ children, theme }: { readonly children: ReactElement; theme: 'light' | 'dark' }) {
+
+const profile = {
+  dark: <Profile theme={DARK} />,
+  light: <Profile theme={LIGHT} />,
+};
+
+function Index({ children, theme }: Readonly<{ readonly children: ReactElement; theme: THEME }>) {
+  const { isProfileShown, logoutPromptIsActive, toggleLogoutPrompt, toggleProfile } = useGlobalContext();
+  const route = useRoute();
+  const navigation = useNavigation();
+  useEffect(() => {
+    if (!logoutPromptIsActive && route.name === 'Home') {
+      navigation.addListener('beforeRemove', (e) => {
+        e.preventDefault();
+        toggleLogoutPrompt();
+      });
+    }
+  }, [navigation, toggleLogoutPrompt, logoutPromptIsActive]);
   return (
-    <View style={(Styles.container, { backgroundColor: theme === 'dark' ? '#1B1917' : '#FFFFFF' })}>
+    <View style={(Styles.container, { backgroundColor: theme === DARK ? '#1B1917' : '#FFFFFF' })}>
+      {isProfileShown && (
+        <TouchableOpacity
+          onPress={toggleProfile}
+          style={{
+            height: '100%',
+            width: '100%',
+            backgroundColor: 'transparent',
+            position: 'absolute',
+            top: 0,
+            zIndex: 5,
+          }}
+        />
+      )}
+      <LogoutPrompt />
       <View style={Styles.containerReceipt}>
         {HalfCircleComponent[theme]}
         {BgShadowComponent[theme]}
@@ -88,8 +132,17 @@ function Index({ children, theme }: { readonly children: ReactElement; theme: 'l
       <BSIMIcon width={135} style={Styles.logo} />
       {children}
       {footerTheme[theme]}
+      {profile[theme]}
     </View>
   );
 }
 
-export default memo(Index);
+function LayoutProvider({ children, theme }: Readonly<{ readonly children: ReactElement; theme: THEME }>) {
+  return (
+    <GlobProvider>
+      <Index theme={theme}>{children}</Index>
+    </GlobProvider>
+  );
+}
+
+export default memo(LayoutProvider);

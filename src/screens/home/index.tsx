@@ -1,3 +1,4 @@
+import { DARK, LIGHT } from '@/helpers/constant/theme';
 import Hexagon from '@/screens/home/itemOfMenu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
@@ -37,11 +38,11 @@ function Index() {
   console.log('<<home', isPriority);
 
   return (
-    <Layout theme={isPriority ? 'dark' : 'light'}>
+    <Layout theme={isPriority ? DARK : LIGHT}>
       <View style={Registration.container}>
         <View>
-          <Text style={titleTheme[isPriority ? 'dark' : 'light']}>Selamat datang</Text>
-          <Text style={descTheme[isPriority ? 'dark' : 'light']}>Silakan pilih layanan</Text>
+          <Text style={titleTheme[isPriority ? DARK : LIGHT]}>Selamat datang</Text>
+          <Text style={descTheme[isPriority ? DARK : LIGHT]}>Silakan pilih layanan</Text>
         </View>
         <View style={[Registration.containerMenu, { transform: [{ scale: scale }] }]}>
           {MenuData.map((item) => (

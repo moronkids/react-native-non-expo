@@ -2,14 +2,6 @@ module.exports = {
   presets: ['module:@react-native/babel-preset'],
   plugins: [
     [
-      'module:react-native-dotenv',
-      {
-        envName: 'APP_ENV',
-        moduleName: '@env',
-        path: '.env',
-      },
-    ],
-    [
       'module-resolver',
       {
         root: ['.'], // <- this is the same as the baseUrl
@@ -17,6 +9,13 @@ module.exports = {
         alias: {
           '@': './src/', // <- this is absolute (different from tsconfig)
         },
+      },
+    ],
+    [
+      'dotenv-import',
+      {
+        moduleName: '@env',
+        path: '.env',
       },
     ],
   ],

@@ -74,7 +74,7 @@ const Layout = StyleSheet.create({
         height: '100%',
         right: 0,
         top: 0,
-        zIndex: 999,
+        zIndex: 2,
     },
     containerFooter: {
         height: 56,

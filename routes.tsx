@@ -15,9 +15,8 @@ function RootStack() {
         headerShown: false,
       }}
     >
-      <Stack.Screen name='Regist' component={Registration} />
       <Stack.Screen name='SplashScreen' component={SplashScreen} />
-      <Stack.Screen name='Registration' component={Home} />
+      <Stack.Screen name='Regist' component={Registration} />
       <Stack.Screen name='Home' component={Home} />
       <Stack.Screen name='Receipt' component={Receipt} />
     </Stack.Navigator>

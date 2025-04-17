@@ -1,5 +1,6 @@
 import HexagonContainerDark from '@/assets/img/dark/hexagon.svg';
 import HexagonContainer from '@/assets/img/hexagon.svg';
+import { DARK, LIGHT } from '@/helpers/constant/theme';
 import { StackActions, useNavigation } from '@react-navigation/native'; // Import navigation hook
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
@@ -30,9 +31,9 @@ function Hexagon({ title, Icon, isPriority }: Readonly<{ title: string; Icon: Re
   return (
     <TouchableOpacity onPress={handlePress} style={{ position: 'relative' }}>
       <View style={Style.container}>
-        <Text style={titleTheme[isPriority ? 'dark' : 'light']}>{title}</Text>
+        <Text style={titleTheme[isPriority ? DARK : LIGHT]}>{title}</Text>
         <Icon width={70} height={70} style={{ zIndex: 2 }} />
-        {hexagonTheme[isPriority ? 'dark' : 'light']}
+        {hexagonTheme[isPriority ? DARK : LIGHT]}
       </View>
       <View style={Style.boxShadow} />
     </TouchableOpacity>
