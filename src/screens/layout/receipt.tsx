@@ -122,7 +122,7 @@ function Index({ children, theme }: Readonly<{ readonly children: ReactElement; 
           }}
         />
       )}
-      <LogoutPrompt />
+      <LogoutPrompt theme={theme} />
       <View style={Styles.containerReceipt}>
         {HalfCircleComponent[theme]}
         {BgShadowComponent[theme]}

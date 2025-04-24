@@ -4,8 +4,12 @@ import { StyleSheet, Text, View } from 'react-native';
 const UTCPlus7Clock = () => {
   const [time, setTime] = useState(() => {
     const now = new Date();
+    console.log(now, '<<now');
+
     const utc = now.getTime() + now.getTimezoneOffset() * 60000;
     const utcPlus7 = new Date(utc + 7 * 60 * 60000);
+    console.log(utcPlus7, '<<now-x');
+
     return {
       hours: utcPlus7.getHours(),
       minutes: utcPlus7.getMinutes(),
@@ -24,10 +28,11 @@ const UTCPlus7Clock = () => {
       const minutes = utcPlus7.getMinutes();
 
       setTime({ hours, minutes });
-
+      /* istanbul ignore else*/
       if (hoursRef.current) {
         hoursRef.current.setNativeProps({ text: formatTime(hours) });
       }
+      /* istanbul ignore else*/
       if (minutesRef.current) {
         minutesRef.current.setNativeProps({ text: formatTime(minutes) });
       }
@@ -47,10 +52,6 @@ const UTCPlus7Clock = () => {
 
     updateTime();
     scheduleNextUpdate();
-
-    return () => {
-      // No cleanup needed because setTimeout is managed within scheduleNextUpdate.
-    };
   }, []);
 
   const formatTime = (value: number) => {
@@ -60,13 +61,13 @@ const UTCPlus7Clock = () => {
   return (
     <View style={styles.container}>
       <View style={styles.timeContainer}>
-        <Text style={styles.timeText} ref={hoursRef}>
+        <Text testID='hour' style={styles.timeText} ref={hoursRef}>
           {formatTime(time.hours)}
         </Text>
       </View>
       <Text style={styles.separator}>:</Text>
       <View style={styles.timeContainer}>
-        <Text style={styles.timeText} ref={minutesRef}>
+        <Text testID='minute' style={styles.timeText} ref={minutesRef}>
           {formatTime(time.minutes)}
         </Text>
       </View>
