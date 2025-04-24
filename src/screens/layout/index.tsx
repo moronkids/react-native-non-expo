@@ -87,7 +87,7 @@ function Index({ children, theme }: Readonly<{ readonly children: ReactElement; 
   useEffect(() => {
     if (!logoutPromptIsActive && route.name === 'Home') {
       navigation.addListener('beforeRemove', (e) => {
-        e.preventDefault();
+        e?.preventDefault();
         toggleLogoutPrompt();
       });
     }
@@ -96,6 +96,7 @@ function Index({ children, theme }: Readonly<{ readonly children: ReactElement; 
     <View style={{ ...Styles.container, ...container[theme] }}>
       {isProfileShown && (
         <TouchableOpacity
+          testID='profile-btn'
           onPress={toggleProfile}
           style={{
             height: '100%',

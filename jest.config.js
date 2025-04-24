@@ -1,7 +1,7 @@
 module.exports = {
   preset: 'react-native',
-  transform: {
-    '^.+\\.(ts|tsx)?$': 'ts-jest',
-    '^.+\\.(js|jsx)$': 'babel-jest',
+  moduleNameMapper: {
+    '\\.svg': '<rootDir>/src/__mocks__/svgMock.js',
   },
+  transformIgnorePatterns: ['node_modules/(?!((jest-)?react-native(-.*)?|@react-native(-community)?|@rneui|@react-navigation)/)'],
 };
