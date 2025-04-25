@@ -21,13 +21,11 @@ const LogoutIconType = {
 };
 
 function Profile({ theme }: Readonly<{ theme: THEME }>) {
-  console.log('<<islight', theme);
-
   const { isProfileShown, toggleProfile, setIsProfileShown, toggleLogoutPrompt } = useGlobalContext();
   const profileRef = useRef(null);
-  console.log('<<isProfileShown', isProfileShown);
   return (
     <View
+      testID={`profile-${theme}`}
       style={{
         position: 'absolute',
         top: 20,
@@ -45,6 +43,7 @@ function Profile({ theme }: Readonly<{ theme: THEME }>) {
         }}
       >
         <View
+          testID='wrapper'
           style={{
             width: 20,
             height: 20,
@@ -68,7 +67,6 @@ function Profile({ theme }: Readonly<{ theme: THEME }>) {
         </View>
         <Pressable
           onPress={() => {
-            console.log('<<is pressed');
             setIsProfileShown(!isProfileShown);
           }}
           style={{
@@ -82,6 +80,7 @@ function Profile({ theme }: Readonly<{ theme: THEME }>) {
       {isProfileShown && (
         <View
           ref={profileRef}
+          testID='wrapper-1'
           style={{
             position: 'absolute',
             display: 'flex',
@@ -112,6 +111,7 @@ function Profile({ theme }: Readonly<{ theme: THEME }>) {
             }}
           >
             <View
+              testID='wrapper-2'
               style={{
                 width: 48,
                 height: 48,
@@ -142,6 +142,7 @@ function Profile({ theme }: Readonly<{ theme: THEME }>) {
               }}
             >
               <Text
+                testID='text-1'
                 style={{
                   fontWeight: 500,
                   fontSize: 16,
@@ -171,6 +172,7 @@ function Profile({ theme }: Readonly<{ theme: THEME }>) {
               }}
             >
               <Text
+                testID='text-2'
                 style={{
                   fontWeight: 600,
                   fontSize: 12,
@@ -212,6 +214,7 @@ function Profile({ theme }: Readonly<{ theme: THEME }>) {
                   }}
                 >
                   <Text
+                    testID='text-3'
                     style={{
                       fontSize: 12,
                       color: theme === DARK ? '#C3CDD1' : '#869094',
@@ -220,6 +223,7 @@ function Profile({ theme }: Readonly<{ theme: THEME }>) {
                     Nama kantor cabang
                   </Text>
                   <Text
+                    testID='text-4'
                     style={{
                       fontSize: 14,
                       fontWeight: 400,
@@ -290,6 +294,7 @@ function Profile({ theme }: Readonly<{ theme: THEME }>) {
               }}
             >
               <Text
+                testID='text-5'
                 style={{
                   color: theme === DARK ? '#FDFDFD' : '#303435',
                   fontSize: 14,

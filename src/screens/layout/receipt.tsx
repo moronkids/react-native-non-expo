@@ -1,5 +1,3 @@
-import ArrowDownWhite from '@/assets/img/arrow-down-white.svg';
-import ArrowDown from '@/assets/img/arrow-down.svg';
 import HalfCircle from '@/assets/img/bgReceipt.svg';
 import BgShadow from '@/assets/img/bgReceiptShadow.svg';
 import BSIMIcon from '@/assets/img/bsimLogo.svg';
@@ -19,14 +17,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import LogoutPrompt from './logoutPrompt';
 import Profile from './profile';
 
-const ArrowDownType = {
-  light: <ArrowDown />,
-  dark: <ArrowDownWhite />,
-};
-
 const GradientExample = () => {
   return (
-    <View style={{ ...Styles.containerLogo }}>
+    <View testID='containerLogoDark' style={{ ...Styles.containerLogo }}>
       <LinearGradient
         colors={['#996404', '#B69C6C']}
         style={{
@@ -43,18 +36,19 @@ const GradientExample = () => {
 };
 
 const containerLogo = {
-  light: <View style={{ ...Styles.containerLogo, ...Theme.lightLogoContainer }} />,
+  light: <View testID='containerLogoLight' style={{ ...Styles.containerLogo, ...Theme.lightLogoContainer }} />,
   dark: <GradientExample />,
 };
 const footerTheme = {
   light: (
-    <View style={{ ...Styles.containerFooter, ...Theme.lightFooterContainer }}>
+    <View testID='containerFooterLight' style={{ ...Styles.containerFooter, ...Theme.lightFooterContainer }}>
       <Text style={Styles.footer}>Senin 16 Desember 2024</Text>
       <Clock />
     </View>
   ),
   dark: (
     <LinearGradient
+      testID='containerFooterDark'
       colors={['#E0AA3E', '#7A5D22']}
       style={{ ...Styles.containerFooter, ...Theme.lightFooterContainer, borderTopLeftRadius: 30, borderTopRightRadius: 30 }}
       start={{ x: 0, y: 0 }}
@@ -68,23 +62,23 @@ const footerTheme = {
 };
 
 const HalfCircleComponent = {
-  light: <HalfCircle style={Styles.halfCircleReceiptBg} />,
-  dark: <HalfCircleDark style={Styles.halfCircleReceiptBg} />,
+  light: <HalfCircle testID='halfCircleLight' style={Styles.halfCircleReceiptBg} />,
+  dark: <HalfCircleDark testID='halfCircleDark' style={Styles.halfCircleReceiptBg} />,
 };
 
 const BgShadowComponent = {
-  light: <BgShadow style={Styles.bgShadowReceipt} />,
-  dark: <BgShadowDark style={Styles.bgShadowReceipt} />,
+  light: <BgShadow testID='bgShadowLight' style={Styles.bgShadowReceipt} />,
+  dark: <BgShadowDark testID='bgShadowDark' style={Styles.bgShadowReceipt} />,
 };
 
 const BgImgComponent = {
   light: (
-    <View style={{ position: 'absolute', top: -60, right: -550, width: 1000, height: 400, display: 'flex' }}>
+    <View testID='bgImgLight' style={{ position: 'absolute', top: -60, right: -550, width: 1000, height: 400, display: 'flex' }}>
       <ImageBackground source={WaveImg} style={Styles.imgBackgroundReceipt} resizeMode='cover' resizeMethod='scale' />
     </View>
   ),
   dark: (
-    <View style={{ position: 'absolute', top: -60, right: -550, width: 1000, height: 400, display: 'flex' }}>
+    <View testID='bgImgDark' style={{ position: 'absolute', top: -60, right: -550, width: 1000, height: 400, display: 'flex' }}>
       <ImageBackground source={WaveImgDark} style={Styles.imgBackgroundReceipt} resizeMode='cover' resizeMethod='scale' />
     </View>
   ),
@@ -111,6 +105,7 @@ function Index({ children, theme }: Readonly<{ readonly children: ReactElement; 
     <View style={(Styles.container, { backgroundColor: theme === DARK ? '#1B1917' : '#FFFFFF' })}>
       {isProfileShown && (
         <TouchableOpacity
+          testID='toggle-profile'
           onPress={toggleProfile}
           style={{
             height: '100%',

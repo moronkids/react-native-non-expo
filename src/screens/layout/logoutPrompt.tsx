@@ -12,6 +12,7 @@ function LogoutPrompt({ theme }: Readonly<{ theme: string }>) {
       {logoutPromptIsActive && (
         <>
           <TouchableOpacity
+            testID='overlay-bg'
             onPress={toggleLogoutPrompt}
             style={{
               height: '100%',
@@ -99,6 +100,7 @@ function LogoutPrompt({ theme }: Readonly<{ theme: string }>) {
                   zIndex: 1000,
                   flex: 1,
                 }}
+                testID='logout-button'
                 onPress={() => {
                   (navigation.navigate as (name: string, params?: object) => void)('Regist', {});
                   toggleLogoutPrompt();

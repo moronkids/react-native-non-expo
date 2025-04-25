@@ -22,7 +22,7 @@ function Index() {
       await AsyncStorage.setItem('isPriority', String(isPriority));
       navigation.dispatch(StackActions.push('Home', { branchCode }));
     } catch {
-      console.log('error set customer type');
+      throw Error('Failed to set customer type');
     }
   };
   const onSubmit = (data: { branchCode: string }) => {
@@ -32,8 +32,6 @@ function Index() {
       setCustomerType(false);
     }
   };
-  console.log(formState?.errors?.branchCode, '<<fks');
-
   const inputStyle: StyleProp<TextStyle> = StyleSheet.flatten([
     {
       width: '100%',
@@ -125,7 +123,6 @@ function Index() {
                     style={inputStyle}
                     value={branchCode}
                     onChangeText={(value) => {
-                      console.log(value, field, '<<fll');
                       setBranchCode(value);
                       field.onChange(value);
                     }}

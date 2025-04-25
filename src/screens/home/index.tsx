@@ -23,20 +23,15 @@ function Index() {
   const getCustomerType = async () => {
     try {
       const response = (await AsyncStorage.getItem('isPriority')) ?? 'false';
-      console.log(response, JSON.parse(response) === 'true', '<<home-rep');
-
       const isPriority = (response !== null && JSON.parse(response)) || false;
       setIsPriority(isPriority);
     } catch {
-      console.log('error get customer type');
       return false;
     }
   };
   useEffect(() => {
     getCustomerType();
   }, []);
-  console.log('<<home', isPriority);
-
   return (
     <Layout theme={isPriority ? DARK : LIGHT}>
       <View style={Registration.container}>
