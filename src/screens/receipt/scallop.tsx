@@ -30,6 +30,7 @@ const SVGComponent: React.FC<SVGComponentProps> = ({
     const cx = circleRadius + index * (diameter + spacing);
     return (
       <Circle
+        testID={`circle-${index}`}
         key={index}
         cx={cx}
         cy={circleRadius}

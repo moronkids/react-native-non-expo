@@ -8,8 +8,8 @@ import { SvgProps } from 'react-native-svg';
 import { Menu as Style } from './style';
 
 const hexagonTheme = {
-  light: <HexagonContainer width={200} height={200} style={{ zIndex: 1, position: 'absolute' }} />,
-  dark: <HexagonContainerDark width={200} height={200} style={{ zIndex: 1, position: 'absolute' }} />,
+  light: <HexagonContainer testID='light' width={200} height={200} style={{ zIndex: 1, position: 'absolute' }} />,
+  dark: <HexagonContainerDark testID='dark' width={200} height={200} style={{ zIndex: 1, position: 'absolute' }} />,
 };
 
 const titleTheme = {
@@ -29,7 +29,7 @@ function Hexagon({ title, Icon, isPriority }: Readonly<{ title: string; Icon: Re
   };
 
   return (
-    <TouchableOpacity onPress={handlePress} style={{ position: 'relative' }}>
+    <TouchableOpacity testID='item-of-menu' onPress={handlePress} style={{ position: 'relative' }}>
       <View style={Style.container}>
         <Text style={titleTheme[isPriority ? DARK : LIGHT]}>{title}</Text>
         <Icon width={70} height={70} style={{ zIndex: 2 }} />

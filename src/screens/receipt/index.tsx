@@ -57,7 +57,9 @@ function Index() {
       <View style={Style.container}>
         <View style={{ display: 'flex', alignItems: 'center', gap: 31 }}>
           <View>
-            <Text style={StyleTitle[isPriority ? DARK : LIGHT]}>Silakan ambil tiket antrean Anda</Text>
+            <Text testID='title' style={StyleTitle[isPriority ? DARK : LIGHT]}>
+              Silakan ambil tiket antrean Anda
+            </Text>
           </View>
           <View style={Style.containerReceipt}>
             <View style={Style.wrapperReceiptContent}>

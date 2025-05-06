@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --clearCache",
     "test:ui": "jest --coverage",
     "lint:migrate": "npx  @eslint/migrate-config .eslintrc.js"
   },

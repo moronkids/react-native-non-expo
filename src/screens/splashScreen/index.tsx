@@ -11,7 +11,7 @@ function Index() {
     }, 950);
   }, [navigation]);
   return (
-    <View style={Style.container}>
+    <View testID='splash-screen' style={Style.container}>
       <Image source={SplashScreen} style={Style.logoSplash} />
     </View>
   );

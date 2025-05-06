@@ -24,6 +24,7 @@ function Index() {
     try {
       const response = (await AsyncStorage.getItem('isPriority')) ?? 'false';
       const isPriority = (response !== null && JSON.parse(response)) || false;
+      console.log('<<prior', typeof isPriority, isPriority, response);
       setIsPriority(isPriority);
     } catch {
       return false;
